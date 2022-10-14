@@ -295,6 +295,10 @@ export class ComponentRef<T> extends AbstractComponentRef<T> {
       }
     }
   }
+  
+  setInputs(inputs: Partial<T>): this {
+    Object.entries(inputs).forEach(([key, value]) => this.setInput(key, value));
+  }
 
   override get injector(): Injector {
     return new NodeInjector(this._tNode, this._rootLView);
